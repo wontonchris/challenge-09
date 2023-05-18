@@ -4,7 +4,8 @@ const inquirer = require('inquirer');
 
 // Create an array of questions for user input
 const { questions } = require('./questions');
-const { generateMarkdown } = require('.generateMarkdown');
+const { generateMarkdown } = require('./generateMarkdown');
+
 
 // Function to ask the questions
 function askQuestions() {
@@ -20,14 +21,16 @@ function writeREADME(answers) {
   // TODO: Implement the logic to write the README file using the provided answers
   // You can use the fs module or any other appropriate method to write the file
   // Example:
-  fs.writeFile('README.md', JSON.stringify(answers, null, 2), function (err) {
-    if (err) {
-      console.error(err);
-    } else {
-      console.log('README file generated successfully!');
-    }
-  });
+  fs.writeFile('README.md', generateMarkdown(answers),function(err){
+    if(err) throw err;
+    console.log('README file generated successfully!');
+  }
+  );
+  
 }
+// Function to call license badge
+
+    
 
 // Function to initialize app
 function main() {
